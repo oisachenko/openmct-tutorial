@@ -7,11 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: appleboy/ssh-action@v0.1.2
+        uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.HOST}}
           key: ${{secrets.HOST_SSH_KEY}}
           username: ${{secrets.HOST_USERNAME}}
+          port: ${{secrets.HOST_PORT}}
           script: | 
             cd /home/ubuntu/expertland/
             git clone git@github.com:oisachenko/openmct-tutorial.git
