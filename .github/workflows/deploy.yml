@@ -13,7 +13,8 @@ jobs:
           cd /home/ubuntu/expertland/
       - name: Checkout the repo
         uses: actions/checkout@v2
-
+        with:
+          path: '../../../expertland/'
 #          pass: ${{ secrets.PASS }}
 #          args: "-tt -vvv"
 #        env:
