@@ -8,12 +8,15 @@ jobs:
     steps:
       - name: Checkout
         uses: appleboy/ssh-action@master
+        env:
+          HOST_PORT: ${{ secrets.HOST_PORT }}
         with:
           host: ${{secrets.HOST}}
           key: ${{secrets.HOST_SSH_KEY}}
           username: ${{secrets.HOST_USERNAME}}
           port: ${{secrets.HOST_PORT}}
           script: | 
+            ls
             cd /home/ubuntu/expertland/
             git clone git@github.com:oisachenko/openmct-tutorial.git
             echo 'Deployment successful'
