@@ -14,7 +14,7 @@ jobs:
           host: ${{secrets.HOST}}
           key: ${{secrets.HOST_SSH_KEY}}
           username: ${{secrets.HOST_USERNAME}}
-          port: ${{secrets.HOST_PORT}}
+          port: $HOST_PORT
           script: | 
             ls
             cd /home/ubuntu/expertland/
