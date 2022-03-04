@@ -6,20 +6,14 @@ env:
   FIRST_NAME: Test    
 jobs:
   build: 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checkout
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /tmp
-            ls -a
-            echo "env_var:$FIRST_NAME"
-            exit 1
-          host: ${{secrets.HOST}}
-          port: ${{secrets.HOST_PORT}}
-          user: ${{secrets.HOST_USERNAME}}
-          key: ${{secrets.HOST_SSH_KEY}}
+      - name: Change work folder
+        run: |
+          cd /home/ubuntu/expertland/
+      - name: Checkout the repo
+        uses: actions/checkout@v2
+
 #          pass: ${{ secrets.PASS }}
 #          args: "-tt -vvv"
 #        env:
