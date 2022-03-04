@@ -11,10 +11,15 @@ jobs:
       - name: Change work folder
         run: |
           cd /home/ubuntu/expertland/
-      - name: Checkout the repo
-        uses: actions/checkout@v3
-        with:
-          path: '/home/expertland/'
+      - name: Checkout manual
+        run: | 
+          ls
+          cd /home/ubuntu/expertland/
+          git clone git@github.com:oisachenko/openmct-tutorial.git
+      #- name: Checkout the repo
+      #  uses: actions/checkout@v3
+      #  with:
+      #    path: '/home/expertland/'
 #          pass: ${{ secrets.PASS }}
 #          args: "-tt -vvv"
 #        env:
