@@ -1,0 +1,19 @@
+name: Deploy Deployment
+on: 
+  push:
+    branches: [main, completed]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{HOST}}
+          key: ${{HOST_SSH_KEY}}
+          username: ${{HOST_USERNAME}}
+          script: |
+            cd /home/ubuntu/expertland/
+            git clone git@github.com:oisachenko/openmct-tutorial.git
+            echo 'Deployment successful'
+            
