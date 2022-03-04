@@ -17,7 +17,7 @@ jobs:
             echo "env_var:$FIRST_NAME"
             exit 1
           host: ${{secrets.HOST}}
-          port: ${{ secrets.HOST_PORT }}
+          port: ${{secrets.HOST_PORT}}
           user: ${{secrets.HOST_USERNAME}}
           key: ${{secrets.HOST_SSH_KEY}}
 #          pass: ${{ secrets.PASS }}
