@@ -15,7 +15,7 @@ jobs:
           key: ${{secrets.HOST_SSH_KEY}}
           username: ${{secrets.HOST_USERNAME}}
           port: $HOST_PORT
-          script: | 
+          script: |  
             ls
             cd /home/ubuntu/expertland/
             git clone git@github.com:oisachenko/openmct-tutorial.git
