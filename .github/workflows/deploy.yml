@@ -12,7 +12,7 @@ jobs:
         run: |
           cd /home/ubuntu/expertland/
       - name: Checkout manual
-        run: | 
+        run: |  
           ls
           cd /home/ubuntu/expertland/
           git clone git@github.com:oisachenko/openmct-tutorial.git
