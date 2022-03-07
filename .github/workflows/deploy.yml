@@ -2,10 +2,6 @@ name: Deploy Deployment
 on: 
   push:
     branches: [main, completed]
-env:
-  FIRST_NAME: Test
-  HOST: ${{ secrets.HOST }}
-  USERNAME: ${{ secrets.HOST_IP }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,22 +9,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Test
-        run: |
-          echo $FIRST_NAME
-          echo $HOST
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.HOST_SSH_KEY }}
           username: ${{ secrets.HOST_USERNAME }}
-          #port: $HOST_PORT
+          port: ${{ secrets.HOST_PORT }}
           script: |
-            echo $FIRST_NAME
-            cd /var/www/html/
+            cd /home/ubuntu/expertland
             git checkout -f 
-            git pull origin master
+            git pull origin completed
       #- name: Checkout the repo
       #  uses: actions/checkout@v3
       #  with:
