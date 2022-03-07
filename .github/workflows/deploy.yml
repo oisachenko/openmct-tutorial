@@ -18,8 +18,7 @@ jobs:
           port: ${{ secrets.HOST_PORT }}
           script: |
             cd /home/ubuntu/expertland
-            git checkout -f 
-            git pull origin completed
+            git clone git@github.com:oisachenko/openmct-tutorial.git
       #- name: Checkout the repo
       #  uses: actions/checkout@v3
       #  with:
