@@ -11,6 +11,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Test
+        run: |
+          echo $FIRST_NAME
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
