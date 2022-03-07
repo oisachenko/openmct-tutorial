@@ -15,6 +15,7 @@ jobs:
       - name: Test
         run: |
           echo $FIRST_NAME
+          echo $HOST
       - name: Deployment
         uses: appleboy/ssh-action@master
         with:
