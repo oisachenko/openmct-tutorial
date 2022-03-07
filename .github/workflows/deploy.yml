@@ -5,6 +5,7 @@ on:
 env:
   FIRST_NAME: Test
   HOST: ${{ secrets.HOST }}
+  USERNAME: ${{ secrets.HOST_USERNAME }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
