@@ -3,7 +3,8 @@ on:
   push:
     branches: [main, completed]
 env:
-  FIRST_NAME: Test    
+  FIRST_NAME: Test
+  HOST: ${{ secrets.HOST }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
