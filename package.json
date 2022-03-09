@@ -1,25 +1,18 @@
 {
-  "name": "openmct-tutorials",
-  "version": "0.0.1",
-  "description": "Tutorials for Open MCT",
-  "main": "example-server/server.js",
-  "scripts": {
-    "start": "node example-server/server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nasa/openmct-tutorial.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nasa/openmct-tutorial/issues"
-  },
-  "homepage": "https://github.com/nasa/openmct-tutorial#readme",
-  "dependencies": {
-    "express": "^4.16.4",
-    "express-ws": "^4.0.0",
-    "openmct": "latest",
-    "ws": "^6.1.2"
-  }
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14"
+    }
 }
