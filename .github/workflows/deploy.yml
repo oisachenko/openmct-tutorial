@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      #- name: Checkout
+      #- name: Checkout.
       #  uses: actions/checkout@v2
       - name: Checkout and Run
         uses: appleboy/ssh-action@master
@@ -20,11 +20,11 @@ jobs:
             cd /home/ubuntu/expertland
             docker-compose down
             git pull origin
-#            docker-compose up -d
-#            echo 'pausing: waiting for mysql to come available'
-#            chmod a+x Docker/wait-for-mysql.sh
-#            ./Docker/wait-for-mysql.sh
-#            echo 'un-pausing: mysql is now available'
+           docker-compose up -d
+            echo 'pausing: waiting for mysql to come available'
+            chmod a+x Docker/wait-for-mysql.sh
+           ./Docker/wait-for-mysql.sh
+            echo 'un-pausing: mysql is now available'
       - name: Deploy and docker-compose
         uses: appleboy/ssh-action@master
         if: ${{ false }}
