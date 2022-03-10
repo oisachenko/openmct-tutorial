@@ -20,10 +20,10 @@ jobs:
             cd /home/ubuntu/expertland
             docker-compose down
             git pull origin
-           docker-compose up -d
+            docker-compose up -d
             echo 'pausing: waiting for mysql to come available'
             chmod a+x Docker/wait-for-mysql.sh
-           ./Docker/wait-for-mysql.sh
+            ./Docker/wait-for-mysql.sh
             echo 'un-pausing: mysql is now available'
       - name: Deploy and docker-compose
         uses: appleboy/ssh-action@master
