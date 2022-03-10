@@ -25,9 +25,9 @@ jobs:
             chmod a+x Docker/wait-for-mysql.sh
             ./Docker/wait-for-mysql.sh
             echo 'un-pausing: mysql is now available'
-      - name: Deploy and docker-compose
+      - name: In docker container run
         uses: appleboy/ssh-action@master
-        if: ${{ false }}
+        #if: ${{ false }}
         with:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.HOST_SSH_KEY }}
