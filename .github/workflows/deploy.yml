@@ -9,7 +9,7 @@ jobs:
     steps:
       #- name: Checkout
       #  uses: actions/checkout@v2
-      - name: Checkout
+      - name: Checkout and Run
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -21,28 +21,23 @@ jobs:
             docker-compose down
             git pull origin
             docker-compose up -d
+            echo 'pausing: waiting for mysql to come available'
+            chmod a+x Docker/wait-for-mysql.sh
+            ./Docker/wait-for-mysql.sh
+            echo 'un-pausing: mysql is now available'
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          key: ${{ secrets.HOST_SSH_KEY }}
+          username: ${{ secrets.HOST_USERNAME }}
+          port: ${{ secrets.HOST_PORT }}
+          script: |
+            cd /home/ubuntu/expertland
             docker-compose exec -T app composer install
             docker-compose exec -T app php artisan key:generate
-            docker-compose exec -T app php artisan migrate --seed
             docker-compose exec -T app php artisan config:clear
             docker-compose exec -T app php artisan cache:clear
+            docker-compose exec -T app php artisan migrate --seed
             docker-compose exec -T app npm install
             docker-compose exec -T app npm run build
-      #- name: Checkout the repo
-      #  uses: actions/checkout@v3
-      #  with:
-      #    path: '/home/expertland/'
-#          pass: ${{ secrets.PASS }}
-#          args: "-tt -vvv"
-#        env:
-#          HOST_PORT: ${{ secrets.HOST_PORT }}
-#        with:
-#          host: ${{secrets.HOST}}
-#          key: ${{secrets.HOST_SSH_KEY}}
-#          username: ${{secrets.HOST_USERNAME}}
-#          port: $HOST_PORT
-#          script: |
-#            ls
-#            cd /home/ubuntu/expertland/
-#            git clone git@github.com:oisachenko/openmct-tutorial.git
-#            echo 'Deployment successful'

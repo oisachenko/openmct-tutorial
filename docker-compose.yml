@@ -4,7 +4,7 @@ services:
     build:
       args:
         user: www
-        uid: ${UID}
+        uid: 1000
       context: ./
       dockerfile: Dockerfile
     image: laravel-image
