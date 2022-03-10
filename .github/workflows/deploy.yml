@@ -1,15 +1,15 @@
 name: Deploy Deployment
 on:
   push:
-    branches: [main]
+    branches: [dev]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: dev
     steps:
+      #- name: Checkout
+      #  uses: actions/checkout@v2
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Deployment
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -18,7 +18,16 @@ jobs:
           port: ${{ secrets.HOST_PORT }}
           script: |
             cd /home/ubuntu/expertland
-            git clone git@github.com:oisachenko/openmct-tutorial.git
+            docker-compose down
+            git pull origin
+            docker-compose up -d
+            docker-compose exec -T app composer install
+            docker-compose exec -T app php artisan key:generate
+            docker-compose exec -T app php artisan migrate --seed
+            docker-compose exec -T app php artisan config:clear
+            docker-compose exec -T app php artisan cache:clear
+            docker-compose exec -T app npm install
+            docker-compose exec -T app npm run build
       #- name: Checkout the repo
       #  uses: actions/checkout@v3
       #  with:
