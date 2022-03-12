@@ -27,7 +27,7 @@ jobs:
             echo 'un-pausing: mysql is now available'
       - name: In docker container run
         uses: appleboy/ssh-action@master
-        #if: ${{ false }} ###
+        ####if: ${{ false }} ###
         with:
           host: ${{ secrets.HOST }}
           key: ${{ secrets.HOST_SSH_KEY }}
